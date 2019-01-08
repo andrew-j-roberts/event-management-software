@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ASig Rush Portal</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Dialogue Box CSS -->
+    <link href="../vendor/jquery-ui/jquery-ui.css" rel="stylesheet">
+
+    <!-- Jquery pagination -->
+    <link href="../vendor/jquery-pagination/pagination.css" rel="stylesheet">
+    
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">ΑΣΦ Rush Portal</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li style="padding: 40px 0 0;"> 
+                            <a href="dashboard.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="registration.html"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Registration</a>
+                        </li>
+                        <li>
+                            <a href="checkin-portal.html"><i class="fa fa-sign-in fa-fw" aria-hidden="true"></i> Check-in</a>
+                        </li>
+                        <li>
+                            <a href="rushee-tables.html"><i class="fa fa-group fa-fw" aria-hidden="true"></i> Rushees</a>
+                        </li>
+                        <li>
+                            <a href="profile.html"><i class="fa fa-search fa-fw" aria-hidden="true"></i> Search</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4 class="page-header">Rushee Profiles</h4>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <button onClick="back()">
+                        <i class="glyphicon glyphicon-menu-left"></i>
+                    </button>
+                      <label id="firstName" style="padding-left: 20px">Andrew</label> <label id="lastName">Roberts</label>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row" style="padding-top: 10px">
+                                <div class="col-md-6">
+                                    <img id="rusheePic" src="images/default.jpg">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-right">
+                                <button class="btn close" onClick="this.blur()">Delete <span class="glyphicon glyphicon-remove" style="vertical-align:middle"></span></button>
+                                <div id="dialog-box" title="Confirmation:">This will permanently delete the rushee's record, are you sure?</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6" style="padding-top: 10px">
+                            Year:
+                            <label id="year">No year provided</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            Address:
+                            <label id="address">No address provided</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            Phone number:
+                            <label id="phoneNum">No phone number provided</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            UVA id:
+                            <label id="uvaid">No UVA id provided</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <label>Round invites</label>
+                    <div class="row" style="padding-top: 10px">
+                        <div class="col-md-6">
+                            First Round:
+                            <label id="1"><span class="glyphicon glyphicon-remove"></span></label>
+                        </div>
+                        <div class "col-md-6">
+                            <button class="btn btn-success btn-xs" onClick="addToRound(1);this.blur()">Add <span class="glyphicon glyphicon-plus"></span></button>
+                            <button class="btn btn-danger btn-xs" onClick="removeFromRound(1);this.blur()">Remove <span class="glyphicon glyphicon-minus"></span></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            Second Round:
+                            <label id="2"><span class="glyphicon glyphicon-remove"></span></label>
+                        </div>
+                        <div class "col-md-6">
+                            <button class="btn btn-success btn-xs" onClick="addToRound(2);this.blur()">Add <span class="glyphicon glyphicon-plus"></span></button>
+                            <button class="btn btn-danger btn-xs" onClick="removeFromRound(2);this.blur()">Remove <span class="glyphicon glyphicon-minus"></span></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            Third Round:
+                            <label id="3"><span class="glyphicon glyphicon-remove"></span></label>
+                        </div>
+                        <div class "col-md-6">
+                            <button class="btn btn-success btn-xs" onClick="addToRound(3);this.blur()">Add <span class="glyphicon glyphicon-plus"></span></button>
+                            <button class="btn btn-danger btn-xs" onClick="removeFromRound(3);this.blur()">Remove <span class="glyphicon glyphicon-minus"></span></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <label>Event attendance</label>
+                    <div class="row" style="padding-top: 10px">
+                        <div class="col-md-4">
+                            <label>First Round</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Second Round</label>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Third Round</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Event 1:
+                            <label id="11">No</label>
+                        </div>
+                        <div class="col-md-4">
+                            Event 1:
+                            <label id="21">No</label>
+                        </div>
+                        <div class="col-md-4">
+                            Event 1:
+                            <label id="31">No</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Event 2:
+                            <label id="12">No</label>
+                        </div>
+                        <div class="col-md-4">
+                            Event 2:
+                            <label id="22">No</label>
+                        </div>
+                        <div class="col-md-4">
+                            Event 2:
+                            <label id="32">No</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            Event 3:
+                            <label id="13">No</label>
+                        </div>
+                        <div class="col-md-4">
+                            Event 3:
+                            <label id="23">No</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <label>Comments</label>
+
+                    <div style="padding-top: 10px" id="data-container"></div>
+                    <div style="padding-top: 10px" id="pagination-container"></div>
+
+                    <div class="row" style="padding-top:20px">
+                        <div class="col-md-8">
+                            <input id="addComment" type="text" name="addComment" placeholder="What would you like to comment?" class="form-control">
+                        </div>
+                        <button class="btn btn-success btn-s" onClick="addComment();this.blur()">Add <span class="glyphicon glyphicon-plus"></span></button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /#page-wrapper -->
+        
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Footer -->
+    <div id="footer-wrapper">
+    </div>
+
+    <!-- THEME DEPENDENCIES -->
+    <!-- jQuery -->
+    <script>window.$ = window.jQuery = require('../vendor/jquery/jquery.min.js');</script>
+    <!-- Jquery Pagination -->
+    <script src="../vendor/jquery-pagination/pagination.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Dialogue popup -->
+    <script src="../vendor/jquery-ui/jquery-ui.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- FUNCTIONALITY -->
+    <script src="../js/rusheeProfileApp.js"></script>
+    <script>
+        // set up delete button
+        $(document).ready(function() {
+            $("#dialog-box").dialog({
+                autoOpen: false,
+                modal: true
+            });
+
+            $(".close").click(function(e) {
+                $("#dialog-box").dialog({
+                    buttons : {
+                        "Confirm" : function() {
+                            var user_id = document.getElementById("uvaid").innerHTML;
+                            // go back 2 pages so the json is reloaded & the table reflects the delete
+                            history.go(-1);
+                        },
+                        "Cancel" : function() {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                $("#dialog-box").dialog("open");
+            });
+
+            var rusheeComments;
+            getRusheeProfile(email, function(data){
+                rusheeComments = data.comments;
+            });
+
+             // Set up comment section
+            setTimeout(function(){ 
+                $('#pagination-container').pagination({
+                    dataSource: rusheeComments,
+                    pageSize: 5,
+                    callback: function(data, pagination) {
+                        var html = simpleTemplating(data);
+                        $('#data-container').html(html);
+                    }
+                });
+            }, 500);
+        });
+
+        getRusheeEventAttendance(email, eventAttendance);
+        getRusheeRoundInvites(email, roundInvites);
+        
+        setTimeout(function(){ 
+            // events
+            document.getElementById('11').innerHTML = eventAttendance["11"];
+            document.getElementById('12').innerHTML = eventAttendance["12"];
+            document.getElementById('13').innerHTML = eventAttendance["13"];
+            document.getElementById('21').innerHTML = eventAttendance["21"];
+            document.getElementById('22').innerHTML = eventAttendance["22"];
+            document.getElementById('23').innerHTML = eventAttendance["23"];
+            document.getElementById('31').innerHTML = eventAttendance["31"];
+            document.getElementById('32').innerHTML = eventAttendance["32"];
+            //rounds
+            document.getElementById('1').innerHTML = roundInvites["1"];
+            document.getElementById('2').innerHTML = roundInvites["2"];
+            document.getElementById('3').innerHTML = roundInvites["3"];
+        }, 500);
+
+        // param1: # value for round (1, 2, 3)
+        function addToRound(round) {
+            console.log("Add round clicked, round= " + round);
+            addRusheeRoundInvite(round);
+        }
+
+        // param1: # value for round (1, 2, 3)
+        function removeFromRound(round) {
+            console.log("Remove round clicked, round= " + round);
+            removeRusheeRoundInvite(round);
+        }
+        
+        function simpleTemplating(data) {
+            var html = '<ul>';
+            $.each(data, function(index, item){
+                html += '<li>'+ item +'</li>';
+            });
+            html += '</ul>';
+            return html;
+        }
+    </script>
+
+</html>

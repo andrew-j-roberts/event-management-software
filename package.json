@@ -1,0 +1,16 @@
+{
+  "name": "rush-registration-project",
+  "version": "1.0.0",
+  "description": "Registration software for Alpha Sigma Phi ZU.  Created by Andrew Roberts, Class of 2018.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Andrew Roberts",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.7.9",
+    "json2xls": "^0.1.2",
+    "webcamjs": "^1.0.23"
+  }
+}
